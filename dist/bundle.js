@@ -196,7 +196,7 @@ class HrEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MO
 			model: 'horizontalRule',
 			view: ( modelElement, writer ) => {
                 console.log( 'createHrElement() called' );
-                const container = writer.createContainerElement( 'div', { class: 'hr-container' } );
+                // const container = writer.createContainerElement( 'div', { class: 'hr-container' } );
                 
                 // const svg = writer.createContainerElement( "svg", { xmlns: "http://www.w3.org/2000/svg", version="1.1", viewBox:"0 0 360 40", class:"hr-image" } ); 
                 // const circle1 = writer.createEmptyElement( "circle1", { cx = "20",  cy = "20", r = "20", style = "fill:#000000" } );
@@ -210,20 +210,18 @@ class HrEditing extends _ckeditor_ckeditor5_core_src_plugin__WEBPACK_IMPORTED_MO
                 // writer.insert( writer.createPositionAt( svg, 3 ), circle4 );
                 // writer.insert( writer.createPositionAt( svg, 4 ), circle5 );
                 
-                const svg = writer.createEmptyElement( 'hr', { class: 'svg-placeholder' } ); 
-                const hr = writer.createEmptyElement( 'hr', { class: 'visuallyhidden' } );
+                const hr = writer.createEmptyElement( 'hr', { class: 'hr-placeholder' } );
             
-                writer.insert( writer.createPositionAt( container, 0 ), svg );
-                writer.insert( writer.createPositionAt( container, 1 ), hr );
+                // writer.insert( writer.createPositionAt( container, 0 ), hr );
             
-                return container;
+                return hr;
             }
         } );
 
         conversion.for( 'editingDowncast' ).elementToElement( {
             model: 'horizontalRule',
             view: ( modelElement, writer ) => {
-                return writer.createEmptyElement( 'hr' );
+                return writer.createEmptyElement( 'hr', { class: 'hr-placeholder' } );
             }
         } );
     }
